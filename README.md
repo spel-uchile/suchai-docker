@@ -2,7 +2,7 @@
 
 This Dockerfile is used to create a container to build and program the [SUCHAI Flight Software](https://github.com/spel-uchile/SUCHAI-Flight-Software) using the AVR32 toolchain.
 
-It uses the oficial Ubuntu 16.04 image and install the required dependencies to build the software. It also install the AVR32 toolchain and utilities.
+It uses the oficial Ubuntu 16.04 image and installs the required dependencies to build the software. It also installs the AVR32 toolchain and utilities.
 
 ## Usage
 
