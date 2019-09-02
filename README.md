@@ -30,7 +30,7 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
     git clone https://github.com/spel-uchile/suchai-docker.git
     cd suchai-docker
     
-    # Build the image
+    # Build the image (please note the dot at the end)
     docker build -t suchai-fs .
     ```
     
