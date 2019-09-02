@@ -10,7 +10,7 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
 
     ```bash
     # For Ubuntu and similar
-    sudo apt-get install docker
+    sudo apt-get install docker.io
     
     # For Arch Linux and similar
     sudo pacman -S docker
