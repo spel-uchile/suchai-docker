@@ -14,6 +14,13 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
     
     # For Arch Linux and similar
     sudo pacman -S docker
+    
+    # Add your user to the `docker` group, to run docker commands without sudo
+    sudo usermod -aG docker ${USER}
+    
+    # Restart and (optionally) enable docker daemon
+    sudo systemctl restart docker
+    sudo systemctl enable docker
     ```
     
 - Clone a build the image using `suchai-fs` tag. This will install al required dependencies and AVR32 toolchain.
