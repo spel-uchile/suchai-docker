@@ -20,7 +20,7 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
 
     ```bash
     # Clone this repository and open the directory
-    https://github.com/spel-uchile/suchai-docker.git
+    git clone https://github.com/spel-uchile/suchai-docker.git
     cd suchai-docker
     
     # Build the image
