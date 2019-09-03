@@ -1,1 +1,1 @@
-build-essential cmake locales unzip wget nano grep git python python3 minicom libcunit1-dev libsqlite3-dev postgresql libpq-dev libzmq3-dev
+build-essential cmake locales unzip wget nano grep git python python3 minicom libcunit1-dev libsqlite3-dev postgresql libpq-dev libzmq3-dev avrdude

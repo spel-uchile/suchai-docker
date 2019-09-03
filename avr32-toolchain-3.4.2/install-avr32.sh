@@ -1,4 +1,10 @@
 #!/bin/bash
+package_name="AVR32 Tool Chain"
+arch=`uname -m`
+version="${1:-3.4.2.435}"
+header="${2:-6.1.3.1475}"
+echo $header $version
+
 function check_install_file {
 	install_file=$1
 	if [ ! -f "$install_file" ]; then
@@ -24,14 +30,10 @@ while test $# -gt 0; do
 	shift
 done
 
-package_name="AVR32 Tool Chain"
-arch=`uname -m`
-version=3.4.0.332
-
 echo "Verifying $package_name installation files ($arch)"
 check_install_file avr32-gnu-toolchain-$version-linux.any.$arch.tar.gz
 check_install_file avr32-utilities-$arch.tar.gz
-check_install_file atmel-headers-6.1.3.1475.zip
+check_install_file atmel-headers-$header.zip
 echo "$package_name installation files verified OK"
 
 if [ $dry_run == "yes" ]; then
@@ -53,9 +55,9 @@ cp -ra avr32-utilities-$arch/etc/* /etc
 rm -rf avr32-utilities-$arch
 
 echo "Installing $package_name Headers"
-unzip -q atmel-headers-6.1.3.1475.zip
-cp -ra atmel-headers-6.1.3.1475/avr32/ /usr/local/avr32/avr32/include/
-rm -rf atmel-headers-6.1.3.1475
+unzip -q atmel-headers-$header.zip
+cp -ra atmel-headers-$header/avr32/ /usr/local/avr32/avr32/include/
+rm -rf atmel-headers-$header
 
 echo "Checking environment"
 # Setup path
