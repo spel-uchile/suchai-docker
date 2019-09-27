@@ -20,10 +20,10 @@ ENV USER spel
 ENV PATH $PATH:/usr/local/avr32/bin
 
 # Set the locale
-RUN locale-gen C 
-ENV LANG C
-ENV LANGUAGE C  
-ENV LC_ALL C
+RUN locale-gen en_US.UTF-8 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
 
 RUN cd /spel/avr32-toolchain-3.4.2; ./install-avr32.sh
 
