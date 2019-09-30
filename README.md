@@ -37,14 +37,17 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
 - Launch the container in interactive mode to download and install the [SUCHAI Flight Software](https://github.com/spel-uchile/SUCHAI-Flight-Software)
 
     ```bash
-    # Run de container `suchai-fs` in interactive mode
+    # Run the container `suchai-fs` in interactive mode
     docker run -t -i suchai-fs /bin/bash
     
-    # Once in the container, download and configure the flight software
-    sh install.sh
+    # Run container `suchai-fs` with local ssh keys
+    docker run -v ~/.ssh:/root/.ssh -t -i suchai-fs /bin/bash
     
-    # Finally build
-    sh build.sh
+    # Once in the container, download and configure the flight software
+    sh install_build_nanomind.sh
+    
+    # Run container `suchai-fs` with local ssh keys and a custom command
+    docker run -v ~/.ssh:/root/.ssh -it suchai-fs sh install_build_nanomind.sh
     ```
     
 - Customize the build using the compile.py script inside the SUCHAI-Flight-Software directory. To show the option use.
