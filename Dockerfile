@@ -7,7 +7,7 @@ WORKDIR /spel
 
 # Install any needed packages specified in requirements.txt
 RUN apt-get update
-RUN apt-get -y install build-essential cmake locales unzip wget nano grep git python python3 minicom libcunit1-dev libsqlite3-dev postgresql libpq-dev libzmq3-dev
+RUN apt-get -y install build-essential cmake locales unzip wget nano grep git python python3 minicom libcunit1-dev libsqlite3-dev postgresql libpq-dev libzmq3-dev pkg-config
 
 # Make port 80 available to the world outside this container
 #EXPOSE 80
