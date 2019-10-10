@@ -7,7 +7,7 @@ WORKDIR /spel
 
 # Install any needed packages specified in requirements.txt
 RUN apt-get update
-RUN apt-get -y install build-essential cmake locales unzip wget nano grep git python python3 minicom libcunit1-dev libsqlite3-dev postgresql libpq-dev libzmq3-dev pkg-config
+RUN apt-get -y install build-essential cmake locales unzip wget nano grep git python python-pip python3 python3-pip minicom libcunit1-dev libsqlite3-dev postgresql libpq-dev libzmq3-dev pkg-config
 
 # Make port 80 available to the world outside this container
 #EXPOSE 80
@@ -18,6 +18,8 @@ COPY . /spel
 # Define environment variable
 ENV USER spel
 ENV PATH $PATH:/usr/local/avr32/bin
+ENV PATH $PATH:/spel/SUCHAI-Flight-Software/src/drivers/esp32/xtensa-esp32-elf/bin
+ENV IDF_PATH=/spel/SUCHAI-Flight-Software/src/drivers/esp32/esp-idf
 
 # Set the locale
 RUN locale-gen en_US.UTF-8 
