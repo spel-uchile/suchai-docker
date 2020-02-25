@@ -1,8 +1,11 @@
 #!/bin/bash
 cd SUCHAI-Flight-Software
 git pull
-python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 1 --test_type test_cmd
-python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 0 --test_type test_unit
-python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 0 --test_type test_load
-python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 0 --test_type test_bug_delay
-
+test=$1
+echo $test
+if [ test -eq "test_cmd" ]
+then
+    python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 1 --test_type $test
+else
+    python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 0 --test_type $test
+fi
