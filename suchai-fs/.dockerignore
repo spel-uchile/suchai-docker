@@ -1,0 +1,9 @@
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+*.sqlite3
+volumes
+cosmos-rb
+zmq-hub

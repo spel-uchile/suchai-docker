@@ -1,0 +1,67 @@
+version: '3'
+services:
+  suchai_gnd:
+    image: suchai-fs
+    build:
+      context: ./suchai-fs
+      dockerfile: Dockerfile
+#    command: bash -c "sh install_build_linux.sh && ./SUCHAI-Flight-Software/build_x86/SUCHAI_Flight_Software"
+    command: bash -c "python3 gnd_installer.py --env production  && ./SUCHAI-Flight-Software/build_x86/SUCHAI_Flight_Software"
+    depends_on:
+      - zmq_hub
+      - db
+    environment:
+      - USER=root
+      - POSTGRES_HOST=postgresdb
+    network_mode: host
+    volumes:
+      - ./volumes/postgres-run:/var/run/postgresql
+
+  zmq_hub:
+    image: zmq-hub
+    build:
+      context: ./zmq-hub
+      dockerfile: Dockerfile
+    command: python3 -u  zmqhub.py --mon
+    network_mode: host
+    ports:
+      - 8002:8002
+      - 8001:8001
+      - 8003:8003
+
+  db:
+    image: "postgres:11"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=proyectosuchai2020
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
+    ports:
+      - 5432:5432
+    volumes:
+      - ./volumes/postgres-data:/var/lib/postgresql/data
+      - ./volumes/postgres-run:/var/run/postgresql
+#    restart: unless-stopped
+
+  cosmos_rb:
+    image: cosmos-rb
+    build:
+      context: ./cosmos-rb
+      dockerfile: Dockerfile
+    network_mode: host
+#    command: ruby Launcher
+    environment:
+      - DISPLAY
+      - QT_X11_NO_MITSHM=1
+      - COSMOS_USERPATH=/cosmos
+#    volumes:
+#      - ./volumes/cosmos-dir:/cosmos
+
+#  pg_admin:
+#    image: "pgadmin4"
+#    ports:
+#      - 45483:45483
+
+
+
+

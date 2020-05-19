@@ -28,7 +28,7 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
     ```bash
     # Clone this repository and open the directory
     git clone https://github.com/spel-uchile/suchai-docker.git
-    cd suchai-docker
+    cd suchai-docker/suchai-fs
     
     # Build the image (please note the dot at the end)
     docker build -t suchai-fs .
@@ -106,3 +106,24 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
     # Commit current {CONTAINER_ID} changes to ```suchai-fs``` image
     docker commit {CONTAINER_ID}  suchai-fs
     ```
+
+# Docker Compose
+
+Run the following command:
+
+```bash
+
+docker-compose up
+
+```
+
+To ensure an image build before start process execute
+```bash
+docker-compose up --build
+```
+
+If you have a problem with cosmos-rb connecting to xorg server, 
+add the following line at the end of of visudo file
+```
+Defaults env_keep="DISPLAY XAUTHORITY"
+``` 

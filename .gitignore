@@ -1,1 +1,4 @@
- .directory
+.directory
+volumes
+!volumes/.placeholder
+.idea
