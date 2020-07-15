@@ -31,7 +31,7 @@ It uses the oficial Ubuntu 16.04 image and installs the required dependencies to
     cd suchai-docker/suchai-fs
     
     # Build the image (please note the dot at the end)
-    docker build -t suchai-fs .
+    docker build -t suchai-fs ./suchai-fs
     ```
     
 - Launch the container in interactive mode to download and install the [SUCHAI Flight Software](https://github.com/spel-uchile/SUCHAI-Flight-Software)
@@ -127,3 +127,54 @@ add the following line at the end of of visudo file
 ```
 Defaults env_keep="DISPLAY XAUTHORITY"
 ``` 
+
+# GroundStation notes 
+
+connect to ax100 with pyserial
+```
+miniterm /dev/ttyUSB2 500000
+```
+set csp_node in ax100
+
+```
+param list
+param set csp_node 9 
+```
+
+run doppler python script
+```
+python3 doppler.py $OWN_NODE $SCH_GND_NODE --predict $HOST
+python3 doppler.py 11 10 --predict 0.0.0.0
+
+```
+
+In Suchai FS ground station we need to configure com node
+```
+com_set_node 9
+
+```
+
+Rotctl command to enter interface
+```
+rotctl -m 601 -r /dev/ttyUSB0 -vvvv
+```
+
+There is a systemd archive in init.d files named controlrotor  
+```
+rotctld -m 201 -r /dev/ttyUSB0 -s 9600
+```
+
+Gpredict configuration should be:
+
+- version 2.0
+- Interface host 172.17.58.76
+- Interface host 4532
+- Interface radio type Duplex TRX
+- Interface VFO MAIN SUB
+- Rotator host 172.17.58.76
+- Rotator port 4533
+- Rotator az type 0->180 ->360
+
+
+
+
