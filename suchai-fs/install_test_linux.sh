@@ -6,11 +6,9 @@ echo $test
 if [ "$test" = "test_cmd" ]
 then
     python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 1 --test_type $test
-fi
-
-if [ "$test" = "test_fuzz" ]
+elif [ "$test" = "test_fuzz" ]
 then
-  python3 compile.py LINUX X86 --comm 1 --fp 1 --hk 1 --st_mode 1 --drivers --test 0 --test_type $test
+    python3 compile.py LINUX X86 --comm 1 --fp 1 --hk 1 --st_mode 1 --drivers --test 0 --test_type $test
 else
     python3 compile.py LINUX X86 --comm 0 --fp 0 --hk 0 --st_mode 1 --drivers --test 0 --test_type $test
 fi
