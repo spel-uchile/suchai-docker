@@ -31,6 +31,6 @@ RUN chmod +x install-avr32.sh
 RUN ./install-avr32.sh
 
 WORKDIR /spel
-RUN git clone https://github.com/spel-uchile/SUCHAI-Flight-Software.git
+RUN git clone https://gitlab.com/spel-uchile/suchai-flight-software.git
 # Run this when the container launches
 #CMD sh install.sh
