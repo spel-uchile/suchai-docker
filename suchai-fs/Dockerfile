@@ -31,6 +31,7 @@ RUN chmod +x install-avr32.sh
 RUN ./install-avr32.sh
 
 WORKDIR /spel
+RUN pip3 install zmq
 RUN git clone https://gitlab.com/spel-uchile/suchai-flight-software.git SUCHAI-Flight-Software
 # Run this when the container launches
 #CMD sh install.sh
